@@ -163,13 +163,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Libaries\ImGui\imgui-SFML.cpp" />
+    <ClCompile Include="..\Libaries\ImGui\imgui.cpp" />
+    <ClCompile Include="..\Libaries\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Director.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="JellyBox.cpp" />
+    <ClCompile Include="JellyRec.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Libaries\ImGui\imconfig.h" />
+    <ClInclude Include="..\Libaries\ImGui\imgui-SFML.h" />
+    <ClInclude Include="..\Libaries\ImGui\imgui.h" />
+    <ClInclude Include="..\Libaries\ImGui\imgui_internal.h" />
+    <ClInclude Include="..\Libaries\ImGui\stb_rect_pack.h" />
+    <ClInclude Include="..\Libaries\ImGui\stb_textedit.h" />
+    <ClInclude Include="..\Libaries\ImGui\stb_truetype.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Director.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="JellyBox.h" />
+    <ClInclude Include="JellyRec.h" />
     <ClInclude Include="MathHelp.h" />
     <ClInclude Include="NonCopyable.h" />
   </ItemGroup>
