@@ -1,6 +1,8 @@
 #ifndef MATHHELP_H
 #define MATHHELP_H
 
+#include <SFML\Graphics.hpp>
+
 namespace Math
 {
     // Returns a random variable between the low & high variables
@@ -15,6 +17,13 @@ namespace Math
     T Clamp(const T& n, const T& lower, const T& upper)
     {
         return std::max(lower, std::min(n, upper));
+    }
+
+    float CalculateDistance(const sf::Vector2f& p1, const sf::Vector2f& p2)
+    {
+        float diffY = p1.y - p2.y;
+        float diffX = p1.x - p2.x;
+        return sqrt((diffY * diffY) + (diffX * diffX));
     }
 }
 
