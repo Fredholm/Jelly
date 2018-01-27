@@ -5,9 +5,16 @@ JellyBox::JellyBox()
 {
     m_JellyRectangles.push_back(new JellyRec());
     m_JellyRectangles.push_back(new JellyRec());
+    m_JellyRectangles.push_back(new JellyRec());
+
     m_JellyRectangles[0]->InitAnimation(ShapeData(50, 50, -100, 0), AnimationFactory::UpAndDown);
-    m_JellyRectangles[0]->AddTechnique(TechniqueType::SquashAndStretch);
-    m_JellyRectangles[1]->InitAnimation(ShapeData(50, 50, 100, 0), AnimationFactory::UpAndDown);
+
+    m_JellyRectangles[1]->InitAnimation(ShapeData(50, 50, 0, 0), AnimationFactory::UpAndDown);
+    m_JellyRectangles[1]->AddTechnique(TechniqueType::PoseToPose);
+
+    m_JellyRectangles[2]->InitAnimation(ShapeData(50, 50, 100, 0), AnimationFactory::UpAndDown);
+    m_JellyRectangles[2]->AddTechnique(TechniqueType::SquashAndStretch);
+    m_JellyRectangles[2]->AddTechnique(TechniqueType::PoseToPose);
 }
 
 JellyBox::~JellyBox() 

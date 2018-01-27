@@ -7,12 +7,14 @@
 
 class Technique;
 class TechniqueSS;
+class TechniquePoseToPose;
 class Animation;
 class JellyRec
 {
 public:
     friend Technique;
     friend TechniqueSS;
+    friend TechniquePoseToPose;
 
     JellyRec();
     virtual ~JellyRec();

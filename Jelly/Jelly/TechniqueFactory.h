@@ -12,6 +12,7 @@ public:
     Technique* BuildTechnique(TechniqueType type, JellyRec* rec);
 private:
     Technique* BuildTechniqueSS(TechniqueType type, JellyRec* rec);
+    Technique* BuildTechniquePoseToPose(TechniqueType type, JellyRec* rec);
 };
 
 

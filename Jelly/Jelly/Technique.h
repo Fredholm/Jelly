@@ -6,7 +6,8 @@
 enum TechniqueType
 {
     Nothing,
-    SquashAndStretch
+    SquashAndStretch,
+    PoseToPose
 };
 
 class JellyRec;

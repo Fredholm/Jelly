@@ -18,9 +18,9 @@ void AnimationFactory::BuildUpAndDown(Animation* animation, ShapeData shapeData)
     float CenterY = (Global::Resolution.y * 0.5f) - (shapeData.Size.y * 0.5f) + shapeData.Offset.y;
 
     KeyFrame frame;
-    frame.Init(sf::Vector2f(CenterX, CenterY - CenterY * 0.5f), sf::seconds(ANIMATION_UPANDDOWN_SEC));
+    frame.Init(sf::Vector2f(CenterX, CenterY - CenterY * 0.33f), sf::seconds(ANIMATION_UPANDDOWN_SEC));
     animation->AddKeyFrame(frame);
 
-    frame.Init(sf::Vector2f(CenterX, CenterY + CenterY * 0.5f), sf::seconds(ANIMATION_UPANDDOWN_SEC));
+    frame.Init(sf::Vector2f(CenterX, CenterY + CenterY * 0.33f), sf::seconds(ANIMATION_UPANDDOWN_SEC));
     animation->AddKeyFrame(frame);
 }

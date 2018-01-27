@@ -19,8 +19,9 @@ public:
     void Update(sf::Time dt);
 
 private:
-    sf::Vector2f m_SizeTarget;
-    sf::Vector2f m_SizeProgressor;
+    sf::Vector2f    m_SizeTarget;
+    sf::Vector2f    m_SizeProgressor;
+    float           m_Sturdiness;
 };
 
 
