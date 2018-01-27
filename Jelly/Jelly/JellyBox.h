@@ -14,7 +14,7 @@ public:
     void Update(sf::Time dt);
     void Draw(sf::RenderTarget& target, sf::RenderStates states);
 
-private:
+protected:
     std::vector<JellyRec*> m_JellyRectangles;
 };
 

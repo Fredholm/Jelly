@@ -173,6 +173,8 @@
     <ClCompile Include="JellyBox.cpp" />
     <ClCompile Include="JellyRec.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="TechniqueFactory.cpp" />
+    <ClCompile Include="TechniqueSS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Libaries\ImGui\imconfig.h" />
@@ -190,6 +192,9 @@
     <ClInclude Include="JellyRec.h" />
     <ClInclude Include="MathHelp.h" />
     <ClInclude Include="NonCopyable.h" />
+    <ClInclude Include="Technique.h" />
+    <ClInclude Include="TechniqueFactory.h" />
+    <ClInclude Include="TechniqueSS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

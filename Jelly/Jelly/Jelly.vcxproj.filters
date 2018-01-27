@@ -48,6 +48,12 @@
     <ClCompile Include="AnimationFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TechniqueSS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TechniqueFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Director.h">
@@ -93,6 +99,15 @@
       <Filter>Source Files\imgui</Filter>
     </ClInclude>
     <ClInclude Include="AnimationFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Technique.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechniqueSS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechniqueFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

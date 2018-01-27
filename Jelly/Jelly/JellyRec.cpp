@@ -2,6 +2,8 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "MathHelp.h"
+#include "Technique.h"
+#include "TechniqueFactory.h"
 
 #define REC_WIDTH   50
 #define REC_HEIGHT  50
@@ -39,6 +41,13 @@ void JellyRec::InitAnimation(ShapeData shapeData, AnimationFactory::AnimationTyp
     m_Rectangle.setSize(shapeData.Size);
 }
 
+void JellyRec::AddTechnique(TechniqueType type)
+{
+    TechniqueFactory factory;
+    Technique* teq = factory.BuildTechnique(type, this);
+    m_Techniques.push_back(teq);
+}
+
 void JellyRec::Update(sf::Time dt)
 {
     // Update Animation's position
@@ -48,6 +57,10 @@ void JellyRec::Update(sf::Time dt)
     float           progress           = m_Animation->GetProgress();
     sf::Vector2f    difference         = m_Animation->GetDifference();
     m_Rectangle.setPosition(startPosition + progress * sf::Vector2f(targetPosition.x - startPosition.x, targetPosition.y - startPosition.y));
+
+    // Update Techniques
+    for (Technique* teq : m_Techniques)
+        teq->Update(dt);
 }
 
 void JellyRec::Draw(sf::RenderTarget& window, sf::RenderStates states)
