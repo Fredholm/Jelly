@@ -45,6 +45,9 @@
     <ClCompile Include="..\Libaries\ImGui\imgui-SFML.cpp">
       <Filter>Source Files\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="AnimationFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Director.h">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="..\Libaries\ImGui\stb_truetype.h">
       <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

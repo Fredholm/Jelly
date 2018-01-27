@@ -167,6 +167,7 @@
     <ClCompile Include="..\Libaries\ImGui\imgui.cpp" />
     <ClCompile Include="..\Libaries\ImGui\imgui_draw.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationFactory.cpp" />
     <ClCompile Include="Director.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="JellyBox.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="..\Libaries\ImGui\stb_textedit.h" />
     <ClInclude Include="..\Libaries\ImGui\stb_truetype.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationFactory.h" />
     <ClInclude Include="Director.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="JellyBox.h" />

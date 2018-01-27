@@ -2,6 +2,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "MathHelp.h"
+#include "AnimationFactory.h"
 
 #define REC_WIDTH   50
 #define REC_HEIGHT  50
@@ -10,16 +11,8 @@ JellyRec::JellyRec()
 {
     // Animation Setup
     m_Animation = new Animation();
-
-    float CenterX    = (Global::Resolution.x * 0.5f) - (REC_WIDTH * 0.5f);
-    float CenterY    = (Global::Resolution.y * 0.5f) - (REC_HEIGHT * 0.5f);
-
-    KeyFrame frame;
-    frame.Init(sf::Vector2f(CenterX, CenterY - CenterY * 0.5f), sf::seconds(1.f));
-    m_Animation->AddKeyFrame(frame);
-
-    frame.Init(sf::Vector2f(CenterX, CenterY + CenterY * 0.5f), sf::seconds(1.f));
-    m_Animation->AddKeyFrame(frame);
+    AnimationFactory factory;
+    factory.BuildAnimation(AnimationFactory::UpAndDown, m_Animation, ShapeData(REC_WIDTH, REC_HEIGHT));
 
     // Rectangle Setup
     m_Rectangle.setFillColor(sf::Color::White);
