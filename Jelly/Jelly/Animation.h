@@ -42,6 +42,7 @@ public:
 private:
     bool FirstRunCheck();
 
+    bool                    m_FirstRunCompleted;
     sf::Vector2f            m_PositionalDifference;
     float                   m_Progress;
     int                     m_CurrentIndex;

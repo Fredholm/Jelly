@@ -15,7 +15,7 @@ public:
     void Draw(sf::RenderTarget& target, sf::RenderStates states);
 
 private:
-    std::vector<JellyRec> m_JellyRectangles;
+    std::vector<JellyRec*> m_JellyRectangles;
 };
 
 

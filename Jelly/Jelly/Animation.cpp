@@ -4,6 +4,7 @@ Animation::Animation()
 {
     m_CurrentIndex = -1;
     m_CurrentFrame = KeyFrame();
+    m_FirstRunCompleted = false;
 }
 
 Animation::~Animation() { }
@@ -21,6 +22,7 @@ bool Animation::FirstRunCheck()
         m_CurrentIndex = 0;
         m_CurrentFrame = m_KeyFrames[m_CurrentIndex];
         m_PreviousFrame = m_KeyFrames[m_CurrentIndex];
+        m_FirstRunCompleted = true;
     }
     else
     {
@@ -32,8 +34,7 @@ bool Animation::FirstRunCheck()
 
 void Animation::Update(sf::Time dt)
 {
-    static bool ready = FirstRunCheck();
-    if (ready)
+    if (m_FirstRunCompleted)
     {
         m_CurrentFrame.CurrentTime -= dt;
         m_Progress = 1.f - (m_CurrentFrame.CurrentTime.asSeconds() / m_PreviousFrame.CurrentTime.asSeconds());
@@ -48,5 +49,9 @@ void Animation::Update(sf::Time dt)
             m_CurrentFrame.Reset();
             m_CurrentFrame = m_KeyFrames[m_CurrentIndex];
         }
+    }
+    else
+    {
+        m_FirstRunCompleted = FirstRunCheck();
     }
 }

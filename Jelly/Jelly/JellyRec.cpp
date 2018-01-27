@@ -2,7 +2,6 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "MathHelp.h"
-#include "AnimationFactory.h"
 
 #define REC_WIDTH   50
 #define REC_HEIGHT  50
@@ -11,8 +10,6 @@ JellyRec::JellyRec()
 {
     // Animation Setup
     m_Animation = new Animation();
-    AnimationFactory factory;
-    factory.BuildAnimation(AnimationFactory::UpAndDown, m_Animation, ShapeData(REC_WIDTH, REC_HEIGHT));
 
     // Rectangle Setup
     m_Rectangle.setFillColor(sf::Color::White);
@@ -26,7 +23,21 @@ JellyRec::JellyRec()
     m_Deacceleration    = sf::Vector2f(0, 0);
 }
 
-JellyRec::~JellyRec() { }
+JellyRec::~JellyRec() 
+{
+    if (m_Animation)
+    {
+        delete m_Animation;
+        m_Animation = nullptr;
+    }
+}
+
+void JellyRec::InitAnimation(ShapeData shapeData, AnimationFactory::AnimationType type)
+{
+    AnimationFactory factory;
+    factory.BuildAnimation(type, m_Animation, shapeData);
+    m_Rectangle.setSize(shapeData.Size);
+}
 
 void JellyRec::Update(sf::Time dt)
 {

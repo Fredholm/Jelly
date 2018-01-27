@@ -30,6 +30,12 @@ Director::Director()
 Director::~Director() 
 {
     ImGui::SFML::Shutdown();
+
+    if (m_JellyBox)
+    {
+        delete m_JellyBox;
+        m_JellyBox = nullptr;
+    }
 }
 
 void Director::Run()
