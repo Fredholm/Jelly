@@ -11,22 +11,14 @@ JellyRec::JellyRec()
     // Animation Setup
     m_Animation = new Animation();
 
-    float Left      = REC_WIDTH;
-    float Right     = Global::Resolution.x - REC_WIDTH;
-    float Top       = REC_HEIGHT;
-    float Bottom    = Global::Resolution.y - REC_HEIGHT;
+    float CenterX    = (Global::Resolution.x * 0.5f) - (REC_WIDTH * 0.5f);
+    float CenterY    = (Global::Resolution.y * 0.5f) - (REC_HEIGHT * 0.5f);
 
     KeyFrame frame;
-    frame.Init(sf::Vector2f(Left, Top), sf::seconds(1.f));
+    frame.Init(sf::Vector2f(CenterX, CenterY - CenterY * 0.5f), sf::seconds(1.f));
     m_Animation->AddKeyFrame(frame);
 
-    frame.Init(sf::Vector2f(Right, Bottom), sf::seconds(1.f));
-    m_Animation->AddKeyFrame(frame);
-
-    frame.Init(sf::Vector2f(Left, Bottom), sf::seconds(1.f));
-    m_Animation->AddKeyFrame(frame);
-
-    frame.Init(sf::Vector2f(Right, Top), sf::seconds(1.f));;
+    frame.Init(sf::Vector2f(CenterX, CenterY + CenterY * 0.5f), sf::seconds(1.f));
     m_Animation->AddKeyFrame(frame);
 
     // Rectangle Setup
