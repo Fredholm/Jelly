@@ -17,20 +17,16 @@ JellyRec::JellyRec()
     float Bottom    = Global::Resolution.y - REC_HEIGHT;
 
     KeyFrame frame;
-    frame.Position      = sf::Vector2f(Left, Top);
-    frame.TravelTime    = sf::seconds(1.f);
+    frame.Init(sf::Vector2f(Left, Top), sf::seconds(1.f));
     m_Animation->AddKeyFrame(frame);
 
-    frame.Position      = sf::Vector2f(Right, Bottom);
-    frame.TravelTime    = sf::seconds(1.f);
+    frame.Init(sf::Vector2f(Right, Bottom), sf::seconds(1.f));
     m_Animation->AddKeyFrame(frame);
 
-    frame.Position      = sf::Vector2f(Left, Bottom);
-    frame.TravelTime    = sf::seconds(1.f);
+    frame.Init(sf::Vector2f(Left, Bottom), sf::seconds(1.f));
     m_Animation->AddKeyFrame(frame);
 
-    frame.Position      = sf::Vector2f(Right, Top);
-    frame.TravelTime    = sf::seconds(1.f);
+    frame.Init(sf::Vector2f(Right, Top), sf::seconds(1.f));;
     m_Animation->AddKeyFrame(frame);
 
     // Rectangle Setup
@@ -51,23 +47,15 @@ void JellyRec::Update(sf::Time dt)
 {
     m_Animation->Update(dt);
 
-    sf::Vector2f currentPosition = m_Rectangle.getPosition();
-    sf::Vector2f targetPosition = m_Animation->GetCurrentFrame()->Position;
+    sf::Vector2f startPosition      = m_Animation->GetPreviousFrame()->Position;
+    sf::Vector2f targetPosition     = m_Animation->GetCurrentFrame()->Position;
 
-    float distanceToTarget = Math::CalculateDistance(currentPosition, targetPosition);
-//    m_Acceleration = sf::Vector2f(1.f, 1.f) * distanceToTarget;
-//    m_Deacceleration = sf::Vector2f(1.f, 1.f) / distanceToTarget;
+    sf::Time total                  = m_Animation->GetCurrentFrame()->StartTime;
+    sf::Time elapsed                = m_Animation->GetCurrentFrame()->CurrentTime;
 
-    sf::Vector2f before = currentPosition;
-    currentPosition += (targetPosition - currentPosition) * 0.001f;
-    sf::Vector2f after = currentPosition;
-    m_Rectangle.setPosition(currentPosition);
-
-    // Calculate the speed of the current movement
-    sf::Vector2f result = sf::Vector2f(abs(before.x - after.x), abs(before.y - after.y));
-    m_Acceleration = result;
-
-    printf("Acceleration: X: %f, Y: %f\n", m_Acceleration.x, m_Acceleration.y);
+    float progress = 1.f - (elapsed.asSeconds() / total.asSeconds());
+    sf::Vector2f difference = targetPosition - startPosition;
+    m_Rectangle.setPosition(startPosition + progress * sf::Vector2f(targetPosition.x - startPosition.x, targetPosition.y - startPosition.y));
 }
 
 void JellyRec::Draw(sf::RenderTarget& window, sf::RenderStates states)

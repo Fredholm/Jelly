@@ -20,6 +20,7 @@ bool Animation::FirstRunCheck()
     {
         m_CurrentIndex = 0;
         m_CurrentFrame = m_KeyFrames[m_CurrentIndex];
+        m_PreviousFrame = m_KeyFrames[m_CurrentIndex];
     }
     else
     {
@@ -34,13 +35,15 @@ void Animation::Update(sf::Time dt)
     static bool ready = FirstRunCheck();
     if (ready)
     {
-        m_CurrentFrame.TravelTime -= dt;
-        if (m_CurrentFrame.TravelTime < sf::Time::Zero)
+        m_CurrentFrame.CurrentTime -= dt;
+        if (m_CurrentFrame.CurrentTime < sf::Time::Zero)
         {
+            m_PreviousFrame = m_KeyFrames[m_CurrentIndex];
             m_CurrentIndex++;
             if (m_CurrentIndex >= m_KeyFrames.size())
                 m_CurrentIndex = 0;
 
+            m_CurrentFrame.Reset();
             m_CurrentFrame = m_KeyFrames[m_CurrentIndex];
         }
     }
@@ -49,4 +52,9 @@ void Animation::Update(sf::Time dt)
 KeyFrame* Animation::GetCurrentFrame()
 {
     return &m_CurrentFrame;
+}
+
+KeyFrame* Animation::GetPreviousFrame()
+{
+    return &m_PreviousFrame;
 }
