@@ -36,6 +36,8 @@ void Animation::Update(sf::Time dt)
     if (ready)
     {
         m_CurrentFrame.CurrentTime -= dt;
+        m_Progress = 1.f - (m_CurrentFrame.CurrentTime.asSeconds() / m_PreviousFrame.CurrentTime.asSeconds());
+        m_PositionalDifference = m_CurrentFrame.Position - m_PreviousFrame.Position;
         if (m_CurrentFrame.CurrentTime < sf::Time::Zero)
         {
             m_PreviousFrame = m_KeyFrames[m_CurrentIndex];
@@ -47,14 +49,4 @@ void Animation::Update(sf::Time dt)
             m_CurrentFrame = m_KeyFrames[m_CurrentIndex];
         }
     }
-}
-
-KeyFrame* Animation::GetCurrentFrame()
-{
-    return &m_CurrentFrame;
-}
-
-KeyFrame* Animation::GetPreviousFrame()
-{
-    return &m_PreviousFrame;
 }

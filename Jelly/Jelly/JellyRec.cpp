@@ -45,16 +45,12 @@ JellyRec::~JellyRec() { }
 
 void JellyRec::Update(sf::Time dt)
 {
+    // Update Animation's position
     m_Animation->Update(dt);
-
-    sf::Vector2f startPosition      = m_Animation->GetPreviousFrame()->Position;
-    sf::Vector2f targetPosition     = m_Animation->GetCurrentFrame()->Position;
-
-    sf::Time total                  = m_Animation->GetCurrentFrame()->StartTime;
-    sf::Time elapsed                = m_Animation->GetCurrentFrame()->CurrentTime;
-
-    float progress = 1.f - (elapsed.asSeconds() / total.asSeconds());
-    sf::Vector2f difference = targetPosition - startPosition;
+    sf::Vector2f    startPosition      = m_Animation->GetPreviousFrame()->Position;
+    sf::Vector2f    targetPosition     = m_Animation->GetCurrentFrame()->Position;
+    float           progress           = m_Animation->GetProgress();
+    sf::Vector2f    difference         = m_Animation->GetDifference();
     m_Rectangle.setPosition(startPosition + progress * sf::Vector2f(targetPosition.x - startPosition.x, targetPosition.y - startPosition.y));
 }
 

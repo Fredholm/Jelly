@@ -34,12 +34,16 @@ public:
     void AddKeyFrame(KeyFrame frame);
     void Update(sf::Time dt);
 
-    KeyFrame* GetCurrentFrame();
-    KeyFrame* GetPreviousFrame();
+    KeyFrame* GetCurrentFrame()     { return &m_CurrentFrame;           }
+    KeyFrame* GetPreviousFrame()    { return &m_PreviousFrame;          }
+    float GetProgress()             { return m_Progress;                }
+    sf::Vector2f GetDifference()    { return m_PositionalDifference;    }
 
 private:
     bool FirstRunCheck();
 
+    sf::Vector2f            m_PositionalDifference;
+    float                   m_Progress;
     int                     m_CurrentIndex;
     KeyFrame                m_CurrentFrame;
     KeyFrame                m_PreviousFrame;
