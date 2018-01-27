@@ -15,7 +15,12 @@ public:
     TechniqueSS(TechniqueType inType, JellyRec* inJelly);
     virtual ~TechniqueSS();
 
+    void ShowEditor();
     void Update(sf::Time dt);
+
+private:
+    sf::Vector2f m_SizeTarget;
+    sf::Vector2f m_SizeProgressor;
 };
 
 
